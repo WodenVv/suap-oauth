@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% block title %}
+    {% endblock %}
+    <div class="row">
+        
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col-sm-4 text-left">
+            <img class="foto_ text-left" src="https://suap.ifrn.edu.br{{ user_data['url_foto_150x200'] }}" alt="foto">
+        </div>
+
+        <div class="col-sm-4">
+            <div class="text-center"><h3>{{ user_data['nome_usual'] }}</h3></div>
+
+            <table class="table text-white">
+                <tbody>
+                    {% for field in user_data %}
+                        <tr>
+                            <th>
+                                <th scope="row">{{ field }}</th>
+                            </th>
+                            <td>{{ user_data[field] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="col-sm-2">
+        </div>
+    </div><br>
+
+    <div class="row p-2">
+        <h3 class="text-center">Boletins do Aluno</h3>
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col-sm-8">
+            <select id='exemplo' class="form-select my-4" aria-label="Default select example" onchange="redirecionarPagina()">>
+                <option selected>Selecione o Ano do Boletim que deseja ver</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>
+
+
+        </div>
+
+        <div class="col-sm-2">
+        </div>
+        <script>
+            function redirecionarPagina() {
+              var select = document.getElementById("exemplo");
+              var selectedValue = select.options[select.selectedIndex].value;
+              
+              if (selectedValue === "2020") {
+                window.location.href = "/boletim/2020";
+              } else if (selectedValue === "2021") {
+                window.location.href = "/boletim/2021";
+              } else if (selectedValue === "2022") {
+                window.location.href = "/boletim/2022";
+              }
+              else if (selectedValue === "2023") {
+                window.location.href = "/boletim/2023";
+              }
+            }
+          </script> 
+{% endblock %}

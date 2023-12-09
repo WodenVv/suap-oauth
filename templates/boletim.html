@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div>
+        <div class="d-flex my-3">
+            <h1 class='mx-auto '>Boletim Escolar</h1>
+        </div>
+        <div>
+            <table class="table table-light table-striped table-hover table-borderless table-round-corner">
+                <tr>
+                    <th>DISCIPLINA</th>
+                    <th>Nota Etapa 1:</th>
+                    <th>Nota Etapa 2:</th>
+                    <th>Nota Etapa 3:</th>
+                    <th>Nota Etapa 4:</th>
+                </tr>
+            {% for disciplina in boletim_data %}
+                <tr>
+                    <th>{{ disciplina['disciplina'] }}</th>
+                    <td>{{ disciplina['nota_etapa_1']['nota'] }}</td>
+                    <td>{{ disciplina['nota_etapa_2']['nota'] }}</td>
+                    <td>{{ disciplina['nota_etapa_3']['nota'] }}</td>
+                    <td>{{ disciplina['nota_etapa_4']['nota'] }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
